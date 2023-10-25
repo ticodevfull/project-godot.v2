@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="QuizQuestion" load_steps=2 format=3 uid="uid://dudhwuyx67w2t"]
+
+[ext_resource type="Script" path="res://scripts/resource/res_question.gd" id="1_x4us8"]
+
+[resource]
+script = ExtResource("1_x4us8")
+question_info = "Isso existe?"
+type = 0
+options = [&"sim", &"nao"]
+correct = ""

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnao5sibeax1"]
+
+[ext_resource type="PackedScene" uid="uid://cptf0k2u1k8ev" path="res://terrenos/cenas/tile_map.tscn" id="1_1vvaq"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource("1_1vvaq")]

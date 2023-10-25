@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="QuizQuestion" load_steps=2 format=3 uid="uid://ben5rh77vo8lv"]
+
+[ext_resource type="Script" path="res://scripts/resource/res_question.gd" id="1_qpab4"]
+
+[resource]
+script = ExtResource("1_qpab4")
+question_info = "O algoritmo é uma sequencia de instruções simples que tem o objetivo de obter resultado?"
+type = 0
+options = [&"verdadeiro", &"falso"]
+correct = "verdadeiro"

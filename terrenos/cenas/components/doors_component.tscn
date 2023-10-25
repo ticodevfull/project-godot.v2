@@ -1,0 +1,108 @@
+[gd_scene load_steps=9 format=3 uid="uid://bcgwku0wthccj"]
+
+[ext_resource type="Texture2D" uid="uid://sbw7imurqcag" path="res://assets/interior/wooden_door_b.png" id="1_0530s"]
+[ext_resource type="Script" path="res://terrenos/cenas/components/script/doors_component.gd" id="1_l8uog"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ofe7d"]
+size = Vector2(9.88612, 33.9956)
+
+[sub_resource type="Animation" id="Animation_wh2m1"]
+length = 0.45
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../textura:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../textura2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_qgp6o"]
+resource_name = "open"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../textura:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_h8r35"]
+resource_name = "open_2"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../textura2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_que2t"]
+resource_name = "portadois"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_khes7"]
+_data = {
+"RESET": SubResource("Animation_wh2m1"),
+"open": SubResource("Animation_qgp6o"),
+"open_2": SubResource("Animation_h8r35"),
+"portadois": SubResource("Animation_que2t")
+}
+
+[node name="doors_component" type="Area2D" node_paths=PackedStringArray("animation")]
+z_index = 2
+script = ExtResource("1_l8uog")
+animation = NodePath("AnimationPlayer")
+
+[node name="textura" type="Sprite2D" parent="."]
+position = Vector2(5, 1)
+texture = ExtResource("1_0530s")
+flip_h = true
+hframes = 2
+
+[node name="textura2" type="Sprite2D" parent="."]
+position = Vector2(-11, 1)
+texture = ExtResource("1_0530s")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.00026226, 19.0162)
+rotation = 1.55462
+shape = SubResource("RectangleShape2D_ofe7d")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath(".")
+libraries = {
+"": SubResource("AnimationLibrary_khes7")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]

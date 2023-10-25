@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BDQuiz" load_steps=6 format=3 uid="uid://cd1t8fkg1h3gg"]
+
+[ext_resource type="Script" path="res://scripts/resource/bd_quiz.gd" id="1_gshbb"]
+[ext_resource type="Resource" uid="uid://ben5rh77vo8lv" path="res://resource/question/pergunta_1.tres" id="1_oyyem"]
+[ext_resource type="Resource" uid="uid://cstgf6vk3tsuy" path="res://resource/question/pergunta_2.tres" id="2_limr7"]
+[ext_resource type="Resource" uid="uid://dudhwuyx67w2t" path="res://resource/question/pergunta_3.tres" id="3_gxr12"]
+[ext_resource type="Resource" uid="uid://cy7j6o8xojx0m" path="res://resource/question/pergunta_4.tres" id="4_aami2"]
+
+[resource]
+script = ExtResource("1_gshbb")
+bd = [ExtResource("1_oyyem"), ExtResource("2_limr7"), ExtResource("3_gxr12"), ExtResource("4_aami2")]

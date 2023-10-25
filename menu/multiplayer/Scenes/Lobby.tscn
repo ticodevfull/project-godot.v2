@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://ig1aragnex0k"]
+
+[ext_resource type="Script" path="res://Scripts/HostButton.gd" id="1"]
+[ext_resource type="Script" path="res://Scripts/JoinButton.gd" id="2"]
+[ext_resource type="Script" path="res://Scripts/Connecting.gd" id="3"]
+[ext_resource type="Script" path="res://Scripts/Lobby.gd" id="4"]
+
+[node name="Lobby" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("4")
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Host" type="Button" parent="."]
+layout_mode = 0
+text = "Host"
+script = ExtResource("1")
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IP" type="Label" parent="Host"]
+layout_mode = 0
+text = "IP:"
+
+[node name="Join" type="Button" parent="."]
+layout_mode = 0
+text = "Join"
+script = ExtResource("2")
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IP" type="LineEdit" parent="Join"]
+layout_mode = 0
+placeholder_text = "Enter the host's IP address"
+
+[node name="InvalidIP" type="Label" parent="Join"]
+visible = false
+layout_mode = 0
+text = "Invalid IP address"
+
+[node name="Connecting" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+color = Color(0, 0, 0, 1)
+script = ExtResource("3")
+
+[node name="Label" type="Label" parent="Connecting"]
+layout_mode = 0
+text = "(Connection Status Text)"
+
+[connection signal="pressed" from="Host" to="Host" method="host"]
+[connection signal="pressed" from="Join" to="Join" method="_pressed"]

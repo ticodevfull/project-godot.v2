@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://dk37nhgl44h5v"]
+
+[ext_resource type="Script" path="res://quiz.gd" id="1_7qx7h"]
+[ext_resource type="Texture2D" uid="uid://k41rnmjrgami" path="res://scenes/testeimagem.jpg" id="1_v1uqm"]
+
+[node name="quiz" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7qx7h")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 661.0
+offset_bottom = 386.0
+texture = ExtResource("1_v1uqm")
+
+[node name="questao" type="Label" parent="."]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 81.0
+offset_right = 539.0
+offset_bottom = 187.0
+text = "O algoritmo é uma sequencia de instruções 
+simples que tem o objetivo de obter resultado?"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 208.0
+offset_right = 624.0
+offset_bottom = 232.0
+text = "verdadeiro"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 244.0
+offset_right = 625.0
+offset_bottom = 275.0
+text = "falso"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

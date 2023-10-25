@@ -1,0 +1,135 @@
+[gd_scene load_steps=13 format=3 uid="uid://caujpdlr8uj62"]
+
+[ext_resource type="Script" path="res://menu/Menu.gd" id="1_qcs06"]
+[ext_resource type="Texture2D" uid="uid://c43i0ygy0yvsb" path="res://menu/scenic-game-background-vector.jpg" id="2_tx6ey"]
+[ext_resource type="FontFile" uid="uid://djmw47mgserdg" path="res://menu/PixelifySans-VariableFont_wght.ttf" id="4_abuge"]
+
+[sub_resource type="FontVariation" id="FontVariation_lorhf"]
+base_font = ExtResource("4_abuge")
+variation_face_index = 1
+variation_transform = Transform2D(1, 0, -0.2, 1, 0, 0)
+spacing_glyph = 30
+spacing_top = 15
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7yw4y"]
+emission_shape = 1
+emission_sphere_radius = 128.0
+direction = Vector3(0, 0, 0)
+spread = 36.41
+flatness = 1.0
+gravity = Vector3(500, 0, 200)
+radial_accel_min = -200.0
+scale_min = 4.0
+scale_max = 4.0
+color = Color(0.6, 0.447059, 0.109804, 1)
+turbulence_enabled = true
+
+[sub_resource type="FontVariation" id="FontVariation_365m1"]
+base_font = ExtResource("4_abuge")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cx50e"]
+bg_color = Color(0.596078, 0.227451, 0, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_oy5nm"]
+base_font = ExtResource("4_abuge")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k0qdw"]
+bg_color = Color(0.596078, 0.227451, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h3cyk"]
+bg_color = Color(0.596078, 0.227451, 0, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_javy6"]
+base_font = ExtResource("4_abuge")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a2gj1"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 3.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.550777, 0.549097)
+script = ExtResource("1_qcs06")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.690196, 0.835294, 0.784314, 1)
+layout_mode = 0
+offset_top = 1.0
+offset_right = 1920.0
+offset_bottom = 961.0
+scale = Vector2(0.613948, 0.693078)
+texture = ExtResource("2_tx6ey")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+texture_filter = 2
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_lorhf")
+theme_override_font_sizes/font_size = 200
+text = "GoDev"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Particles2D" type="GPUParticles2D" parent="MarginContainer/VBoxContainer"]
+position = Vector2(563, 662)
+rotation = -1.57736
+scale = Vector2(17.8876, 24.3821)
+amount = 300
+sub_emitter = NodePath(".")
+process_material = SubResource("ParticleProcessMaterial_7yw4y")
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = SubResource("FontVariation_365m1")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_cx50e")
+text = "New game"
+
+[node name="Opitions" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = SubResource("FontVariation_oy5nm")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_k0qdw")
+text = "Opitions"
+
+[node name="Creditos" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = SubResource("FontVariation_oy5nm")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_h3cyk")
+text = "Creditos"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = SubResource("FontVariation_javy6")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_a2gj1")
+text = "Quit"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Opitions" to="." method="_on_opitions_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Creditos" to="." method="_on_creditos_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

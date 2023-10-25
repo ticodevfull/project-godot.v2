@@ -1,0 +1,91 @@
+[gd_scene load_steps=8 format=3 uid="uid://chljsr568iw1f"]
+
+[ext_resource type="Script" path="res://menu/opitions_menu.gd" id="1_7hvrq"]
+[ext_resource type="Texture2D" uid="uid://c43i0ygy0yvsb" path="res://menu/scenic-game-background-vector.jpg" id="2_so4wx"]
+[ext_resource type="FontFile" uid="uid://dojh0yfjy4wkl" path="res://menu/Ranchers-Regular.ttf" id="3_8g038"]
+[ext_resource type="FontFile" uid="uid://djmw47mgserdg" path="res://menu/PixelifySans-VariableFont_wght.ttf" id="4_do132"]
+
+[sub_resource type="FontVariation" id="FontVariation_v2tpo"]
+base_font = ExtResource("3_8g038")
+
+[sub_resource type="FontVariation" id="FontVariation_365m1"]
+base_font = ExtResource("4_do132")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a2eik"]
+emission_shape = 1
+emission_sphere_radius = 128.0
+direction = Vector3(0, 0, 0)
+spread = 36.41
+flatness = 1.0
+gravity = Vector3(500, 0, 200)
+radial_accel_min = -200.0
+scale_min = 4.0
+scale_max = 4.0
+color = Color(0.6, 0.447059, 0.109804, 1)
+turbulence_enabled = true
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.547727, 0.547086)
+script = ExtResource("1_7hvrq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.764706, 0.521569, 0.647059, 1)
+layout_mode = 0
+offset_right = 1154.0
+offset_bottom = 651.0
+scale = Vector2(0.605523, 0.686414)
+texture = ExtResource("2_so4wx")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_v2tpo")
+theme_override_font_sizes/font_size = 80
+text = "Opitions"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Volume" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = SubResource("FontVariation_365m1")
+theme_override_font_sizes/font_size = 30
+text = "Volume"
+
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = SubResource("FontVariation_365m1")
+theme_override_font_sizes/font_size = 30
+text = "Back"
+
+[node name="Particles2D" type="GPUParticles2D" parent="MarginContainer/VBoxContainer"]
+position = Vector2(563, 662)
+rotation = -1.57736
+scale = Vector2(17.8876, 24.3821)
+amount = 300
+sub_emitter = NodePath(".")
+process_material = SubResource("ParticleProcessMaterial_a2eik")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Volume" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

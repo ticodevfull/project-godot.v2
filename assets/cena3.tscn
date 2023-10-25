@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cifwg727fo4mp"]
+
+[ext_resource type="PackedScene" uid="uid://p0w5ufacn051" path="res://terrenos/cenas/levels.tscn" id="1_uakx4"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="level" parent="." instance=ExtResource("1_uakx4")]
+position = Vector2(31, 67)

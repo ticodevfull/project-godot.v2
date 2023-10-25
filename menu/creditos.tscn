@@ -1,0 +1,90 @@
+[gd_scene load_steps=10 format=3 uid="uid://cvxfmxj63i0wr"]
+
+[ext_resource type="Texture2D" uid="uid://c43i0ygy0yvsb" path="res://menu/scenic-game-background-vector.jpg" id="1_kbe30"]
+[ext_resource type="Script" path="res://menu/creditos.gd" id="1_rn3ls"]
+[ext_resource type="FontFile" uid="uid://cat6hmyjogltc" path="res://menu/Roboto-Bold.ttf" id="2_8cx1p"]
+[ext_resource type="FontFile" uid="uid://djmw47mgserdg" path="res://menu/PixelifySans-VariableFont_wght.ttf" id="3_2frxn"]
+[ext_resource type="FontFile" uid="uid://dojh0yfjy4wkl" path="res://menu/Ranchers-Regular.ttf" id="3_s4hcj"]
+
+[sub_resource type="FontVariation" id="FontVariation_jipks"]
+base_font = ExtResource("3_s4hcj")
+
+[sub_resource type="FontVariation" id="FontVariation_3rsxn"]
+base_font = ExtResource("2_8cx1p")
+
+[sub_resource type="FontVariation" id="FontVariation_fptmn"]
+base_font = ExtResource("3_2frxn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wf6bb"]
+emission_shape = 1
+emission_sphere_radius = 128.0
+direction = Vector3(0, 0, 0)
+spread = 36.41
+flatness = 1.0
+gravity = Vector3(500, 0, 200)
+radial_accel_min = -200.0
+scale_min = 4.0
+scale_max = 4.0
+color = Color(0.6, 0.447059, 0.109804, 1)
+turbulence_enabled = true
+
+[node name="Creditos" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.552317, 0.542224)
+script = ExtResource("1_rn3ls")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.635294, 0.560784, 0.470588, 1)
+layout_mode = 0
+offset_right = 1169.0
+offset_bottom = 675.0
+scale = Vector2(0.60747, 0.69892)
+texture = ExtResource("1_kbe30")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="creditos" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_jipks")
+theme_override_font_sizes/font_size = 80
+text = "Creditos"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="texto" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_3rsxn")
+theme_override_font_sizes/font_size = 20
+text = "texto dos creditos"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_fonts/font = SubResource("FontVariation_fptmn")
+theme_override_font_sizes/font_size = 30
+text = "Quit"
+
+[node name="Particles2D" type="GPUParticles2D" parent="MarginContainer/VBoxContainer"]
+position = Vector2(563, 662)
+rotation = -1.57736
+scale = Vector2(17.8876, 24.3821)
+amount = 300
+sub_emitter = NodePath(".")
+process_material = SubResource("ParticleProcessMaterial_wf6bb")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
