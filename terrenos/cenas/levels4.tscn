@@ -48,11 +48,14 @@ position = Vector2(2, 0)
 
 [node name="Label" type="Label" parent="yShort"]
 z_index = 2
-offset_left = 1014.0
-offset_top = 456.0
-offset_right = 1116.0
-offset_bottom = 482.0
-text = "1 + 2 =  5"
+offset_left = 822.0
+offset_top = 304.0
+offset_right = 1797.0
+offset_bottom = 379.0
+theme_override_font_sizes/font_size = 15
+text = "A metodologia XP propõe ciclos curtos para reduzir erros e riscos
+ do produto, com melhoria constante na programação, testes
+ automatizados e integração contínua"
 metadata/_edit_use_anchors_ = true
 
 [node name="Mundo2" parent="yShort" instance=ExtResource("4_c0mdd")]
@@ -66,20 +69,20 @@ layer_0/tile_data = PackedInt32Array(524307, 0, 5, -131071, 0, 5, 589839, 393216
 
 [node name="verdadeiro" type="Button" parent="yShort"]
 z_index = 1
-offset_left = 990.0
-offset_top = 490.0
-offset_right = 1054.0
-offset_bottom = 512.0
+offset_left = 950.0
+offset_top = 448.0
+offset_right = 1014.0
+offset_bottom = 470.0
 theme_override_font_sizes/font_size = 10
 text = "verdadeiro"
 metadata/_edit_use_anchors_ = true
 
 [node name="falso" type="Button" parent="yShort"]
 z_index = 1
-offset_left = 1058.0
-offset_top = 490.0
-offset_right = 1130.0
-offset_bottom = 512.0
+offset_left = 1030.0
+offset_top = 448.0
+offset_right = 1102.0
+offset_bottom = 470.0
 theme_override_font_sizes/font_size = 10
 text = "falso"
 metadata/_edit_use_anchors_ = true
